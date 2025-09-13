@@ -9,6 +9,7 @@ import LeavingCertificate from "./components/LeavingCertificate";
 import BonafideCertificate from "./components/BonafideCertificate";
 import Layout from "./components/Layout";
 import MyDetails from "./components/MyDetails";
+import Register from './components/Register';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/admin-login" element={<AdminLogin />} />
 
