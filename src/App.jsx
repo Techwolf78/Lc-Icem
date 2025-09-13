@@ -5,12 +5,14 @@ import ForgetPassword from './components/ForgetPassword';
 import AdminLogin from './components/AdminLogin';
 import StudentDashboard from './components/StudentDashboard';
 import AdminDashboard from './components/AdminDashboard';
+import Register from './components/Register';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
