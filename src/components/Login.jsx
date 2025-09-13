@@ -21,6 +21,11 @@ const Login = () => {
     navigate('/student-dashboard');
   };
 
+  const handleRegisterBtn = (e) => {
+    e.preventDefault();
+    navigate('/register');
+  }
+
   const handleAdminLogin = () => {
     navigate('/admin-login');
   };
@@ -92,6 +97,12 @@ const Login = () => {
             className="text-white/80 hover:text-white underline transition-colors duration-200"
           >
             Forget Password?
+          </button>
+          <button
+            onClick={handleRegisterBtn}
+            className="text-white/80 hover:text-white underline transition-colors duration-200"
+          >
+            Sign in
           </button>
           <button
             onClick={handleAdminLogin}

@@ -5,23 +5,66 @@ import ForgetPassword from "./components/ForgetPassword";
 import AdminLogin from "./components/AdminLogin";
 import StudentDashboard from "./components/StudentDashboard";
 import AdminDashboard from "./components/AdminDashboard";
+import LeavingCertificate from "./components/LeavingCertificate";
+import BonafideCertificate from "./components/BonafideCertificate";
+import Layout from "./components/Layout";
+import MyDetails from "./components/MyDetails";
+import Register from './components/Register';
 import AddDepartmentForm from "./components/Admin/AddDepartmentForm";
 import Admin from "./Pages/Admin";
-import AddStudentForm from "./components/Admin/AddUserForm";
+import AddUserForm from "./components/Admin/AddUserForm";
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
-        <Route path="/admin-dashboard" element={<Admin />}>
-          <Route index element={<AdminDashboard />} />
+
+        {/* Student Routes with Layout */}
+        <Route
+          path="/student-dashboard"
+          element={
+            <Layout>
+              <StudentDashboard />
+            </Layout>
+          }
+        />
+        <Route
+          path="/my-details"
+          element={
+            <Layout>
+              <MyDetails />
+            </Layout>
+          }
+        />
+        <Route
+          path="/leaving-certificate"
+          element={
+            <Layout>
+              <LeavingCertificate />
+            </Layout>
+          }
+        />
+        <Route
+          path="/bonafide-certificate"
+          element={
+            <Layout>
+              <BonafideCertificate />
+            </Layout>
+          }
+        />
+
+        {/* Admin Dashboard */}
+        <Route path="/admin-dashboard" element={<Admin />} >
+          <Route index element={<AdminDashboard/>} />
           <Route path="add-department" element={<AddDepartmentForm />} />
-          <Route path="add-user" element={<AddStudentForm />} />
+          <Route path="add-user" element={<AddUserForm />} />
         </Route>
+        
       </Routes>
     </Router>
   );
