@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, User } from "lucide-react"; // icons
+import Logo from  "../../../public/Logo.png";
 
 function AdminNavbar() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function AdminNavbar() {
         <div className="flex justify-between items-center py-4">
           {/* Left - Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold">ICEM(LOGO)</h1>
+            <img src={Logo} alt="" className="h-20 " />
           </div>
 
           {/* Right - Profile Menu */}
