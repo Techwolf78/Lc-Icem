@@ -4,15 +4,19 @@ import Login from "./components/Login";
 import ForgetPassword from "./components/ForgetPassword";
 import AdminLogin from "./components/AdminLogin";
 import StudentDashboard from "./components/StudentDashboard";
-import AdminDashboard from "./components/AdminDashboard";
+import AdminDashboard from "./components/Admin/AdminDashboard";
 import LeavingCertificate from "./components/LeavingCertificate";
 import BonafideCertificate from "./components/BonafideCertificate";
 import Layout from "./components/Layout";
 import MyDetails from "./components/MyDetails";
-import Register from './components/Register';
+import Register from "./components/Register";
 import AddDepartmentForm from "./components/Admin/AddDepartmentForm";
 import Admin from "./Pages/Admin";
 import AddUserForm from "./components/Admin/AddUserForm";
+import LibraryDashboard from "./components/Admin/LibraryDashboard";
+import HODDashboard from "./components/Admin/HODDashboard";
+import AccountsDashboard from "./components/Admin/AccountDashboard";
+import HostelDashboard from "./components/Admin/HostelDashboard";
 
 function App() {
   return (
@@ -59,12 +63,15 @@ function App() {
         />
 
         {/* Admin Dashboard */}
-        <Route path="/admin-dashboard" element={<Admin />} >
-          <Route index element={<AdminDashboard/>} />
+        <Route path="/admin-dashboard" element={<Admin />}>
+          <Route index element={<AdminDashboard />} />
           <Route path="add-department" element={<AddDepartmentForm />} />
           <Route path="add-user" element={<AddUserForm />} />
+          <Route path="library" element={<LibraryDashboard />} />
+          <Route path="hod" element={<HODDashboard />} />
+          <Route path="accounts" element={<AccountsDashboard />} />
+          <Route path="hostel" element={<HostelDashboard />} />
         </Route>
-        
       </Routes>
     </Router>
   );
