@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, User } from "lucide-react"; // icons
-import Logo from  "../../../public/Logo.png";
+import Logo from  "/Logo.png";
 
 function AdminNavbar() {
   const navigate = useNavigate();

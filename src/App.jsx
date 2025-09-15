@@ -17,6 +17,7 @@ import LibraryDashboard from "./components/Admin/LibraryDashboard";
 import HODDashboard from "./components/Admin/HODDashboard";
 import AccountsDashboard from "./components/Admin/AccountDashboard";
 import HostelDashboard from "./components/Admin/HostelDashboard";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -72,6 +73,9 @@ function App() {
           <Route path="accounts" element={<AccountsDashboard />} />
           <Route path="hostel" element={<HostelDashboard />} />
         </Route>
+
+        {/* catch all routes for 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
