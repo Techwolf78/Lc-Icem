@@ -1,89 +1,149 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import AdminNavbar from "./Admin/AdminNavbar";
+import AdminSidebar from "./Admin/AdminSidebar";
+
+// Icons
+import { Plus, Edit, Trash2 } from "lucide-react";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate('/');
+    // Add token clearing if needed
+    navigate("/");
   };
 
+  const handleAddDepartmentBtn = () => {
+    navigate("/admin-dashboard/add-department");
+  };
+
+   const handleAddUserBtn = () => {
+     navigate("/admin-dashboard/add-user");
+   };
+
+  const users = [
+    { user: "Sumedh Sangle", department: "IT", role: "Intern" },
+    { user: "Aarav Mehta", department: "Finance", role: "Manager" },
+    { user: "Priya Sharma", department: "HR", role: "Staff" },
+    { user: "Rohan Gupta", department: "Marketing", role: "Admin" },
+  ];
+
+  const stats = [
+    {
+      title: "Total Students Onboard",
+      value: "1,250",
+      change: "+12%",
+      color: "text-emerald-600",
+    },
+    {
+      title: "Faculty Members",
+      value: "5",
+      change: "+25%",
+      color: "text-emerald-600",
+    },
+    { title: "Departments", value: "8", change: "0%", color: "text-gray-500" },
+    {
+      title: "Documents Online",
+      value: "92%",
+      change: "+8%",
+      color: "text-emerald-600",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-900">Admin CRM Dashboard</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-700">Welcome, Admin!</span>
-              <button
-                onClick={handleLogout}
-                className="bg-accent hover:bg-accent/80 text-black px-4 py-2 rounded-lg transition duration-200"
+    <div className="">
+      {/* Main Content */}
+      <main className="flex-1 w-auto mx-auto px-6 lg:px-10 py-4 ">
+        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8">
+          {/* Dashboard Header */}
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Admin Dashboard
+            </h2>
+            <button className="flex items-center gap-2 font-medium bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl py-2 px-4 transition" onClick={handleAddDepartmentBtn}>
+              <Plus size={18} />
+              Add Department
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-12">
+            {stats.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-gradient-to-br from-white to-gray-50 shadow-md rounded-xl p-6 hover:shadow-lg transition"
               >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Under Construction Message */}
-        <div className="bg-white rounded-lg shadow p-12">
-          <div className="text-center">
-            <div className="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-12 h-12 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Admin CRM Dashboard</h2>
-            <p className="text-xl text-gray-600 mb-8">Under Construction</p>
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg inline-block">
-              <div className="flex items-center">
-                <svg className="w-6 h-6 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                </svg>
-                <p className="text-blue-800">Administrative features are currently under development. Please check back later.</p>
+                <p className="text-sm font-medium text-gray-500">
+                  {item.title}
+                </p>
+                <p className="mt-2 text-3xl font-extrabold text-gray-900">
+                  {item.value}
+                </p>
+                <p className={`mt-2 text-sm font-semibold ${item.color}`}>
+                  {item.change} since last year
+                </p>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
 
-        {/* Basic Admin Functions */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">👥</span>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900">User Management</h3>
-            <p className="text-gray-600">Coming Soon</p>
+          {/* User Management Header */}
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">
+              User Management
+            </h2>
+            <button className="flex items-center gap-2 font-medium bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl py-2 px-4 transition" onClick={handleAddUserBtn}>
+              <Plus size={18} />
+              Add User
+            </button>
           </div>
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">📊</span>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900">Analytics</h3>
-            <p className="text-gray-600">Coming Soon</p>
-          </div>
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">⚙️</span>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900">System Settings</h3>
-            <p className="text-gray-600">Coming Soon</p>
-          </div>
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">📋</span>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900">Reports</h3>
-            <p className="text-gray-600">Coming Soon</p>
+
+          {/* User Table */}
+          <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-100/80">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    User
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    Department
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    Role
+                  </th>
+                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 bg-white">
+                {users.map((u, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {u.user}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {u.department}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {u.role}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
+                      <button className="p-2 rounded-lg  text-blue-600 hover:bg-blue-200 transition">
+                        <Edit size={18} />
+                      </button>
+                      <button className="p-2 rounded-lg  text-red-600 hover:bg-red-200 transition">
+                        <Trash2 size={18} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

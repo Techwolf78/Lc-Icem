@@ -10,6 +10,9 @@ import BonafideCertificate from "./components/BonafideCertificate";
 import Layout from "./components/Layout";
 import MyDetails from "./components/MyDetails";
 import Register from './components/Register';
+import AddDepartmentForm from "./components/Admin/AddDepartmentForm";
+import Admin from "./Pages/Admin";
+import AddUserForm from "./components/Admin/AddUserForm";
 
 function App() {
   return (
@@ -56,7 +59,12 @@ function App() {
         />
 
         {/* Admin Dashboard */}
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin-dashboard" element={<Admin />} >
+          <Route index element={<AdminDashboard/>} />
+          <Route path="add-department" element={<AddDepartmentForm />} />
+          <Route path="add-user" element={<AddUserForm />} />
+        </Route>
+        
       </Routes>
     </Router>
   );
