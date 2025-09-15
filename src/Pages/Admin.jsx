@@ -1,6 +1,5 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import AdminDashboard from "../components/Admin/AdminDashboard";
 import AdminNavbar from "../components/Admin/AdminNavbar";
 import AdminSidebar from "../components/Admin/AdminSidebar";
 
