@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, User } from "lucide-react"; // icons
-import Logo from  "/Logo.png";
+import Logo from "/Logo.png";
 
 function AdminNavbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const user = localStorage.getItem("username");
 
   const handleLogout = () => {
     navigate("/");

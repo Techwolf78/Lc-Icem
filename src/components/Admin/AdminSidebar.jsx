@@ -9,6 +9,10 @@ import {
   X,
   HelpCircle,
   Ticket,
+  Home, 
+  FileText,
+  IdCard,
+  User
 } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -25,6 +29,18 @@ function AdminSidebar() {
     { name: "Accounts", icon: DollarSign, path: "/admin-dashboard/accounts" },
     { name: "Hostel", icon: ShoppingCart, path: "/admin-dashboard/hostel" },
     { name: "Library", icon: Megaphone, path: "/admin-dashboard/library" },
+    { name: "Home", path: "/student-dashboard", icon: Home },
+    {
+      name: "Leaving Certificate",
+      path: "/leaving-certificate",
+      icon: FileText,
+    },
+    {
+      name: "Bonafide Certificate",
+      path: "/bonafide-certificate",
+      icon: IdCard,
+    },
+    { name: "My Details", path: "/my-details", icon: User },
   ];
 
   const itemRefs = useRef({});
