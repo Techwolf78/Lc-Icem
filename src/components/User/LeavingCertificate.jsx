@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { XMarkIcon } from "@heroicons/react/24/outline"; // ✅ Fixed for Heroicons v2
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const LeavingCertificate = () => {
   const [showModal, setShowModal] = useState(false);
@@ -9,12 +9,10 @@ const LeavingCertificate = () => {
 
   return (
     <div className="flex flex-col justify-start items-start w-full max-w-3xl mx-auto p-6">
-      {/* Page Title */}
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Leaving Certificate Dashboard
       </h1>
 
-      {/* Fill Form Button */}
       <button
         onClick={handleOpenModal}
         className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition"
@@ -22,11 +20,9 @@ const LeavingCertificate = () => {
         Fill Form
       </button>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden">
-            {/* Header */}
             <div className="bg-gradient-to-r from-blue-600 to-indigo-700 px-4 py-3 flex justify-between items-center">
               <h2 className="text-lg font-semibold text-white">
                 Leaving Certificate Form
@@ -39,7 +35,6 @@ const LeavingCertificate = () => {
               </button>
             </div>
 
-            {/* Body */}
             <div className="p-4 max-h-[80vh] overflow-y-auto">
               <form className="space-y-4">
                 <input type="text" placeholder="Student ID" className="w-full border p-2 rounded" required />
@@ -61,7 +56,6 @@ const LeavingCertificate = () => {
               </form>
             </div>
 
-            {/* Footer */}
             <div className="bg-gray-50 px-4 py-3 flex justify-end gap-2">
               <button
                 onClick={handleCloseModal}
