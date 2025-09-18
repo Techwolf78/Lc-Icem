@@ -31,8 +31,8 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="p-2 min-h-screen flex items-start justify-center bg-white">
-      <div className="bg-[#003C84] p-10 rounded-2xl shadow-2xl max-w-lg w-full text-white">
+    <div className="p-2 h-screen w-screen overflow-hidden flex items-start justify-center bg-white">
+      <div className="bg-[#003C84] p-6 rounded-2xl shadow-2xl max-w-lg w-full text-white">
         <div className="text-center mb-8">
           <div className="mx-auto mb-4 w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
             <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
