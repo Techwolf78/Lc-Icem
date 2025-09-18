@@ -1,12 +1,11 @@
 import React, { useState } from "react";
+import { XMarkIcon } from "@heroicons/react/24/outline"; // ✅ Fixed for Heroicons v2
 
 const LeavingCertificate = () => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-  };
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <div className="flex flex-col justify-start items-start w-full max-w-3xl mx-auto p-6">
@@ -15,64 +14,69 @@ const LeavingCertificate = () => {
         Leaving Certificate Dashboard
       </h1>
 
-      {!formSubmitted ? (
-        <>
-          {/* Instructions */}
-          <div className="bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-lg shadow mb-6 w-full">
-            <h2 className="text-lg font-semibold mb-2">Instructions</h2>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Fill out the form carefully with correct details.</li>
-              <li>Ensure you have cleared all dues before submitting.</li>
-              <li>Once submitted, the request will go for verification.</li>
-            </ul>
-          </div>
+      {/* Fill Form Button */}
+      <button
+        onClick={handleOpenModal}
+        className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition"
+      >
+        Fill Form
+      </button>
 
-          {/* Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white shadow-md rounded-xl p-6 w-full flex flex-col gap-4"
-          >
-            <input
-              type="text"
-              placeholder="Enter Name"
-              className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Enter Email"
-              className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
-              required
-            />
-            <textarea
-              placeholder="Reason for leaving"
-              className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
-              rows={4}
-              required
-            />
-            <div className="flex justify-end gap-3">
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 px-4 py-3 flex justify-between items-center">
+              <h2 className="text-lg font-semibold text-white">
+                Leaving Certificate Form
+              </h2>
               <button
-                type="reset"
-                className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+                onClick={handleCloseModal}
+                className="text-white hover:text-gray-200"
               >
-                Clear
+                <XMarkIcon className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="p-4 max-h-[80vh] overflow-y-auto">
+              <form className="space-y-4">
+                <input type="text" placeholder="Student ID" className="w-full border p-2 rounded" required />
+                <input type="text" placeholder="Name of Student (Full Name)" className="w-full border p-2 rounded" required />
+                <input type="text" placeholder="Father's Name" className="w-full border p-2 rounded" required />
+                <input type="text" placeholder="Mother's Name" className="w-full border p-2 rounded" required />
+                <input type="text" placeholder="Caste & Sub-Caste" className="w-full border p-2 rounded" />
+                <input type="text" placeholder="Nationality" className="w-full border p-2 rounded" />
+                <input type="text" placeholder="Place of Birth" className="w-full border p-2 rounded" />
+                <input type="date" className="w-full border p-2 rounded" placeholder="Date of Birth" />
+                <input type="text" placeholder="Date of Birth (in words)" className="w-full border p-2 rounded" />
+                <input type="text" placeholder="Last College Attended" className="w-full border p-2 rounded" />
+                <input type="date" className="w-full border p-2 rounded" placeholder="Date of Admission" />
+                <input type="text" placeholder="Progress & Conduct" className="w-full border p-2 rounded" />
+                <input type="date" className="w-full border p-2 rounded" placeholder="Date of Leaving College" />
+                <input type="text" placeholder="Year in which studying & since when" className="w-full border p-2 rounded" />
+                <textarea placeholder="Reason for leaving college" className="w-full border p-2 rounded" rows={3} />
+                <textarea placeholder="Remarks" className="w-full border p-2 rounded" rows={3} />
+              </form>
+            </div>
+
+            {/* Footer */}
+            <div className="bg-gray-50 px-4 py-3 flex justify-end gap-2">
+              <button
+                onClick={handleCloseModal}
+                className="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100"
+              >
+                Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
               >
                 Submit
               </button>
             </div>
-          </form>
-        </>
-      ) : (
-        <div className="bg-yellow-50 border border-yellow-200 text-yellow-700 p-4 rounded-lg shadow w-full">
-          <h2 className="text-xl font-semibold mb-2">Verification in Progress</h2>
-          <p>
-            Your request has been submitted successfully. Please wait while it is
-            being verified.
-          </p>
+          </div>
         </div>
       )}
     </div>
