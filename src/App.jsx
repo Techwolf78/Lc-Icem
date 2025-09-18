@@ -1,23 +1,36 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Login from "./components/Login";
 import ForgetPassword from "./components/ForgetPassword";
 import AdminLogin from "./components/AdminLogin";
-import StudentDashboard from "./components/StudentDashboard";
+
+import StudentDashboard from "./components/User/StudentDashboard";
+import LeavingCertificate from "./components/User/LeavingCertificate";
+import MyDetails from "./components/User/MyDetails";
+
 import AdminDashboard from "./components/Admin/AdminDashboard";
-import LeavingCertificate from "./components/LeavingCertificate";
-import BonafideCertificate from "./components/BonafideCertificate";
-import Layout from "./components/Layout";
-import MyDetails from "./components/MyDetails";
-import Register from "./components/Register";
-import AddDepartmentForm from "./components/Admin/AddDepartmentForm";
-import Admin from "./Pages/Admin";
-import AddUserForm from "./components/Admin/AddUserForm";
 import LibraryDashboard from "./components/Admin/LibraryDashboard";
 import HODDashboard from "./components/Admin/HODDashboard";
 import AccountsDashboard from "./components/Admin/AccountDashboard";
 import HostelDashboard from "./components/Admin/HostelDashboard";
+
+// ✅ Newly Added Pages
+
+import AlumniDashboard from "./components/Admin/AdminDashboard";
+
+import Register from "./components/Register";
+import AddDepartmentForm from "./components/Admin/AddDepartmentForm";
+import AddUserForm from "./components/Admin/AddUserForm";
+
+import Admin from "./Pages/Admin";
+import Student from "./Pages/Student";
 import NotFound from "./components/NotFound";
+import ExamSection from "./components/Admin/ExamSection";
+import Bus from "./components/Admin/Bus";
+import CentralPlacementDepartment from "./components/Admin/CentralPlacementDepartment";
+import Scholarship from "./components/Admin/Scholarship";
+import DepartmentPlacementCoordinator from "./components/Admin/DepartmentPlacementCoordinator";
 
 function App() {
   return (
@@ -29,39 +42,12 @@ function App() {
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/admin-login" element={<AdminLogin />} />
 
-        {/* Student Routes with Layout */}
-        <Route
-          path="/student-dashboard"
-          element={
-            <Layout>
-              <StudentDashboard />
-            </Layout>
-          }
-        />
-        <Route
-          path="/my-details"
-          element={
-            <Layout>
-              <MyDetails />
-            </Layout>
-          }
-        />
-        <Route
-          path="/leaving-certificate"
-          element={
-            <Layout>
-              <LeavingCertificate />
-            </Layout>
-          }
-        />
-        <Route
-          path="/bonafide-certificate"
-          element={
-            <Layout>
-              <BonafideCertificate />
-            </Layout>
-          }
-        />
+        {/* Student Dashboard */}
+        <Route path="/student" element={<Student />}>
+          <Route index element={<StudentDashboard />} /> {/* Default page */}
+          <Route path="my-details" element={<MyDetails />} />
+          <Route path="leaving-certificate" element={<LeavingCertificate />} />
+        </Route>
 
         {/* Admin Dashboard */}
         <Route path="/admin-dashboard" element={<Admin />}>
@@ -72,9 +58,17 @@ function App() {
           <Route path="hod" element={<HODDashboard />} />
           <Route path="accounts" element={<AccountsDashboard />} />
           <Route path="hostel" element={<HostelDashboard />} />
+
+          {/* ✅ New Sections */}
+          <Route path="alumni" element={<AlumniDashboard />} />
+          <Route path="placement" element={<CentralPlacementDepartment />} />
+          <Route path="department-placement" element={<DepartmentPlacementCoordinator />} />
+          <Route path="scholarship" element={<Scholarship/>} />
+          <Route path="exam" element={<ExamSection />} />
+          <Route path="bus" element={<Bus />} />
         </Route>
 
-        {/* catch all routes for 404 */}
+        {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

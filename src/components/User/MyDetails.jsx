@@ -7,8 +7,7 @@ const MyDetails = () => {
   };
 
   return (
-    <div className="flex-1 p-6 bg-gray-100 min-h-screen">
-      {/* Personal Details Form */}
+    <div className="p-6 bg-gray-100 min-h-screen">
       <div className="bg-white p-6 rounded-xl shadow-md">
         <h2 className="text-2xl font-semibold text-gray-700 mb-4">
           Personal Details
